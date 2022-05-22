@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/text_edit_data"
+        android:textSize="28sp"
+        android:text="EDIT DATA"
+        android:layout_centerHorizontal="true"
+        android:layout_marginVertical="20dp"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Masukkan judul"
+        android:layout_marginHorizontal="15dp"
+        android:padding="3dp"
+        android:background="@drawable/custom_layout_edit_text"
+        android:layout_below="@id/text_edit_data"
+        android:layout_marginBottom="10dp"
+        android:textSize="24sp"
+        android:id="@+id/edit_input_judul"
+        android:importantForAutofill="no"
+        android:inputType="text" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Masukkan catatan"
+        android:inputType="text"
+        android:layout_marginHorizontal="15dp"
+        android:padding="3dp"
+        android:background="@drawable/custom_layout_edit_text"
+        android:layout_below="@id/edit_input_judul"
+        android:layout_marginBottom="20dp"
+        android:textSize="24sp"
+        android:id="@+id/edit_input_catatan"
+        android:importantForAutofill="no" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="UPDATE"
+        android:layout_below="@id/edit_input_catatan"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/edit_button_update_data"/>
+
+</RelativeLayout>
