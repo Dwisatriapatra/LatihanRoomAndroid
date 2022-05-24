@@ -1,19 +1,21 @@
 package com.example.latihanroomandroid.fragment
 
 import android.app.AlertDialog
-import android.content.Context
 import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.asLiveData
 import com.example.latihanroomandroid.R
-import kotlinx.android.synthetic.main.fragment_home.*
+import com.example.latihanroomandroid.datastore.UserLoginManager
 import kotlinx.android.synthetic.main.fragment_profile.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class ProfileFragment : Fragment() {
-
+    private lateinit var userLoginManager: UserLoginManager
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -31,27 +33,30 @@ class ProfileFragment : Fragment() {
     }
 
     private fun initView() {
-        val sharedPreferences = requireContext().getSharedPreferences("DATAUSER", Context.MODE_PRIVATE)
-        val username = sharedPreferences.getString("USERNAME", "")
-        val password = sharedPreferences.getString("PASSWORD", "")
-        profile_username.setText(username)
-        profile_password.setText(password)
+        userLoginManager = UserLoginManager(requireContext())
+        userLoginManager.name.asLiveData().observe(viewLifecycleOwner){
+            profile_name.setText(it)
+        }
+        userLoginManager.username.asLiveData().observe(viewLifecycleOwner){
+            profile_username.setText(it)
+        }
+        userLoginManager.password.asLiveData().observe(viewLifecycleOwner){
+            profile_password.setText(it)
+        }
+
     }
 
     private fun logout(){
+        userLoginManager = UserLoginManager(requireContext())
         AlertDialog.Builder(requireContext())
             .setTitle("LOGOUT")
             .setMessage("Yakin ingin logout?")
             .setNegativeButton("Tidak"){ dialogInterface: DialogInterface, _: Int ->
                 dialogInterface.dismiss()
             }.setPositiveButton("Ya"){ _: DialogInterface, _: Int ->
-                //clear shared preference, so the user must login again to access home after logging out
-                val sharedPreferences = requireContext().getSharedPreferences("DATAUSER", Context.MODE_PRIVATE)
-                val sf = sharedPreferences.edit()
-                sf.clear()
-                sf.apply()
-
-
+                GlobalScope.launch {
+                    userLoginManager.clearDataLogin()
+                }
                 val mIntent = activity?.intent
                 activity?.finish()
                 startActivity(mIntent)

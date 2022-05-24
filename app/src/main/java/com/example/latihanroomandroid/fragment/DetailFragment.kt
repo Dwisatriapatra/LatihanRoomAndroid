@@ -25,8 +25,8 @@ class DetailFragment : Fragment() {
 
     private fun getAllDetails() {
         val detail = arguments?.getParcelable<Catatan>("DATACATATAN")
-        detail_judul.text = "Judul: ${detail?.judul}"
-        detail_catatan.text = "Catatan: ${detail?.catatan}"
-        detail_waktu_pembuatan.text = "Waktu: ${detail?.waktu}"
+        detail_judul.text = "Judul: \n${detail?.judul}"
+        detail_catatan.text = "Catatan: \n${detail?.catatan}"
+        detail_waktu_pembuatan.text = "Waktu: \n${detail?.waktu}"
     }
 }

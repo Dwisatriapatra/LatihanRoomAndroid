@@ -25,12 +25,23 @@
             <de.hdodenhof.circleimageview.CircleImageView
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:src="@drawable/ic_launcher_background"
+                android:src="@drawable/profile_photo"
                 android:layout_centerInParent="true"
                 android:id="@+id/profile_image"
                 tools:ignore="ContentDescription" />
         </RelativeLayout>
-
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Name"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            android:inputType="text"
+            android:background="@drawable/custom_layout_edit_text"
+            android:padding="8dp"
+            android:id="@+id/profile_name"
+            android:importantForAutofill="no"
+            android:layout_marginBottom="5dp"/>
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

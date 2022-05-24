@@ -10,10 +10,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
+import androidx.lifecycle.asLiveData
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.latihanroomandroid.R
 import com.example.latihanroomandroid.adapter.CatatanAdapter
+import com.example.latihanroomandroid.datastore.UserLoginManager
 import com.example.latihanroomandroid.roomdatabase.CatatanDatabase
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.coroutines.GlobalScope
@@ -21,6 +23,7 @@ import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
     private var dbCatatan : CatatanDatabase? = null
+    private lateinit var userLoginManager : UserLoginManager
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,11 +33,10 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
-        val sharedPreferences = requireContext().getSharedPreferences("DATAUSER", Context.MODE_PRIVATE)
-        val username = sharedPreferences.getString("USERNAME", "")
-        home_username_text.text = "Halo, $username"
+        userLoginManager = UserLoginManager(requireContext())
+        userLoginManager.username.asLiveData().observe(viewLifecycleOwner){
+            home_username_text.text = "Halo, $it"
+        }
 
 
         dbCatatan = CatatanDatabase.getInstance(requireContext())

@@ -8,7 +8,7 @@ import com.example.latihanroomandroid.dataclass.User
 interface UserDao {
     @Insert
     fun insertNewUSer(user: User) : Long
-    @Query("SELECT username FROM User WHERE User.username = :username AND User.password = :password")
+    @Query("SELECT name FROM User WHERE User.username = :username AND User.password = :password")
     fun checkUserLoginData(username: String, password : String) : String
     @Delete
     fun deleteDataUser(user: User) : Int

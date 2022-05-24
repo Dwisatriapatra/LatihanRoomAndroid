@@ -15,7 +15,7 @@
             android:layout_width="64dp"
             android:layout_height="64dp"
             android:id="@+id/photo"
-            android:src="@drawable/ic_launcher_background"
+            android:src="@drawable/profile_photo"
             app:civ_border_width="3dp"
             app:civ_border_color="@color/black"/>
         <TextView
@@ -41,7 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_margin="20dp"
+        android:layout_margin="25dp"
         android:src="@drawable/ic_add"
         android:id="@+id/fab_tambah"
         tools:ignore="ContentDescription" />
@@ -50,7 +50,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_margin="20dp"
+        android:layout_margin="25dp"
         android:src="@drawable/ic_baseline_share_24"
         android:id="@+id/fab_share"
         tools:ignore="ContentDescription" />

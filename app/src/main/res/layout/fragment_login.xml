@@ -17,7 +17,7 @@
     <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="108dp"
         android:layout_height="108dp"
-        android:src="@drawable/ic_launcher_background"
+        android:src="@drawable/profile"
         android:layout_centerHorizontal="true"
         android:layout_margin="20dp"
         android:id="@+id/image_login"
@@ -65,7 +65,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Belum punya akun? registrasi disini"
-        android:textSize="22sp"
+        android:textSize="16sp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="70dp"
